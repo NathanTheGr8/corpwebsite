@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="kovetabs">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+
+    <title>Kove</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="bootstrap-3.2.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/kove.css" rel="stylesheet">
+
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+
+
+
+</head>
+
+<body id="top" onload="svgMod()">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default transparent navbar-static-top" role="navigation" id="navbar-main">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navCollapse">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img src="img/kovelogo.png">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navCollapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="xpress/index.html">Xpress</a></li>
+                    <li><a href="about/index.html">About</a></li>
+                    <li><a href="contact/index.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--end nav bar-->
+
+
+    <!--begin bg-carousel-->
+    <div id="bg-fade-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <div class="slide1"></div>
+            </div>
+            <div class="item">
+                <div class="slide2"></div>
+            </div>
+            <div class="item">
+                <div class="slide3"></div>
+            </div>
+        </div><!-- .carousel-inner -->
+        <div class="container carousel-overlay text-center">
+            <h1>The World's Fastest Servers</h1>
+            <h3 class="lead"> And First Unlimited Memory Solution</h3>
+            <br>
+            <br>
+            <br>
+            <br>
+            <a class="page-scroll" href="#tradeoffs"><span class="fa fa-chevron-down fa-5x"></span></a>
+        </div>
+    </div><!-- .carousel -->
+    <!--end bg-carousel-->
+
+
+
+    <!--The Trade of Section-->
+    <div class="container tradeoffs" id="tradeoffs" ng-controller="TabController">
+        <h2 style="text-align: center">Storage Media Tradeoffs</h2>
+        <p>The Kove® philosophy believes that selecting the right technology can be reduced to understanding and managing tradeoffs. Just as you might not purchase a Ferrari for family outings, you’d think twice about purchasing spinning disk for IOPS, Flash for predictable high performance, or DRAM for bulk storage.</p>
+        <p>Current performance storage relies on spinning disk, Flash, and DRAM, each of which has distinctive tradeoffs.</p>
+        <div class="row" id="svg">
+            <!--disk icon-->
+            <div class="col-md-4 col-sm-4 text-center tradeoffslinks" id="disks">
+                <li ng-class="{ active: isSet(1) }"><a href ng-click="setTab(1)">
+
+                    <h4>Spinning Disks</h4>
+                    <img src="img/hard10.png">
+                </a></li>
+            </div>
+            <!--flash icon-->
+            <div class="col-md-4 col-sm-4 text-center tradeoffslinks" id="flash">
+                <li ng-class="{ active: isSet(2) }"><a href ng-click="setTab(2)">
+                    <h4>Flash</h4>
+                    <img src="img/ssd.png">
+                </a></li>
+
+            </div>
+            <!--dram icon-->
+            <div class="col-md-4 col-sm-4 text-center tradeoffslinks" id="dram">
+                <li ng-class="{ active: isSet(3) }"><a href ng-click="setTab(3)">
+                    <h4>DRAM</h4>
+                    <img src="img/random.png">
+                </a></li>
+            </div>
+        </div>
+
+        <!--Hidden disk section-->
+        <div id="aboutdisks" ng-show="isSet(1)">
+            <hr>
+            <p><span class="bold">Advantages</span> Spinning disk continues to offer advantages for bulk storage. It can parallelize sufficiently enough to generate high bandwidth that does not require low latency. Spinning disk is reliable, proven, and inexpensive. Disk arrays do and will bulk up and failover reliably in the real world.</p>
+            <p><span class="bold">Disadvantages</span> Spinning disk has very poor latency and I/O Operations per Second (IOPS). Delivering high performance with spinning disk requires substantial power.</p>
+        </div>
+
+        <!--Hidden flash section-->
+        <div id="aboutflash" ng-show="isSet(2)">
+            <hr>
+            <p><span class="bold">Advantages</span> Compared to spinning disk, Flash offers superior IOPS, read performance, and IOPS cost. Compared to DRAM, Flash provides superior energy efficiency and doesn’t require a backing store for long-term storage.</p>
+            <p><span class="bold">Disadvantages</span> Compared to spinning disk, Flash is complex to manage. Flash performance can vary according to I/O pattern (read, write, mixed, burst, continuous, random, sequential), and its performance level can degrade as much as 90+% as its occupancy increases (“how full the disk is”). When storage performance and predictability matter, administrators must keenly monitor occupancy. Flash uses buffering to conceal 1.4 ms write costs. Constant, durable load can exceed buffering and result in poor performance.</p>
+            <p>Compared to DRAM, Flash performance varies considerably across I/O profiles, depending on whether the storage is reading or writing, using small or large block sizes, providing sequential or random access, or running continuously or in burst. Usage wear influences performance, and wear leveling, block retirement, and RAM buffering diminish, but do not eliminate, this concern. Even with buffering, Flash latency lags behind DRAM performance.</p>
+            <p>Latency, bandwidth, and IOPS all degrade through time in Flash. Performance varies across block size, and administrators should test each manufacturer’s product against their application to ensure that manufacturer design optimizations actually deliver against requirements. Flash provides cost-effective burst performance, but does not yield consistent, sustainable performance under load over time.</p>
+        </div>
+
+        <!--Hidden dram section-->
+        <div id="aboutdram" ng-show="isSet(3)">
+            <hr>
+            <p><span class="bold">Advantages</span> DRAM will run any I/O pattern at predictable performance levels, day-in and day-out, just as well for one year as for one minute.</p>
+            <p>DRAM continues to provide the highest performing media. as well as the most robust solid state storage medium.</p>
+            <p class="topoflist">Compared to spinning disk or Flash, DRAM provides predictable, uniform, and superior performance for:</p>
+            <ul>
+                <li>Uniform, predictable, and deterministic performance—without disclaimers.</li>
+                <li>Performance for variable or diverse I/O patterns that can include small to large block sizes, writes or reads, burst or continuous access, and random or sequential access.</li>
+                <li>Lowest available latency, highest available bandwidth, and highest sustainable IOPS.</li>
+            </ul>
+            <p class="bottomoflist"><span class="bold">Disadvantages</span> Compared to spinning disk or Flash, DRAM costs more on a capacity basis. DRAM requires power backup and backing store for durable persistence across power cycles. DRAM uses less power on a performance basis, but more power on a capacity basis than either spinning disk or Flash.</p>
+        </div>
+
+
+
+        <!--Dram Delivers Section-->
+        <!--
+        <div>
+            <hr style="margin-bottom: 5em">
+            <h2 style="text-align: center">DRAM Storage Delivers</h2>
+            <p class="topoflist">When performance requirements matter to your bottom line, DRAM storage delivers:</p>
+            <ul>
+                <li>Uniform, predictable, and deterministic performance—without disclaimers.</li>
+                <li>Performance for variable or diverse I/O patterns that can include small to large block sizes, writes or reads, burst or continuous access, and random or sequential access.</li>
+                <li>Lowest available latency, highest available bandwidth, and highest sustainable IOPS.</li>
+             </ul>
+            <p class="bottomoflist">DRAM costs more on a capacity basis, but can be cost-competitive and even less expensive on a performance basis.</p>
+            <p>Depending on application requirements, spinning disk provides economical and robust bulk storage. Flash provides burst performance, energy savings, and superior performance to spinning disk. DRAM provides the most robust approach to achieve the highest available performance across diverse and variable application requirements.</p>
+            </ul>
+        </div>
+        -->
+
+        <!--Choose DRAM-->
+        <div style="padding-top: 100px">
+            <h1 style="text-align: center">Choose DRAM</h1>
+            <p>The Kove® engineering team regularly evaluates current and emerging storage media, such as Spinning Disk, Flash, Phase Change Memory, and Memristors, among many others.</p>
+            <h2 style="text-align: center">DRAM is the Best Media for Highest Performance Storage</h2>
+            <p>Kove® products use DRAM because the most challenging storage performance requires it. Application illustrations include metadata management, storage hot spots, ingest engines, low latency apps, database transaction tables, and high bandwidth applications, among numerous others.</p>
+            <p>DRAM continues to provide the highest possible performance and the most robust solid state media for high performance storage.</p>
+            <h2 style="text-align: center">DRAM Performance Advantages</h2>
+
+            <div class="row">
+                <div class="col-md-4">
+
+                </div>
+            </div>
+
+            <!--
+            <p>The Kove® XPD® product line uses DRAM, a media that trades capacity for performance.</p>
+            <p>Unlike spinning disk and Flash, the Kove® XPD® family will not meaningfully degrade performance, whether at 10% occupancy or at 95% occupancy. Short stroking is not necessary. Even when they are optimized for performance, an XPD® system handily outperforms both spinning disk and Flash on quantitative performance metrics.</p>
+            <p>Specifically, the Kove® XPD® product line provides consistent IOPS for variable I/O patterns, world record-setting bandwidth, and the lowest available real world latency performance.</p>
+            <p>The Kove® XPD® technology just works, and when performance matters it just works better.</p>
+            -->
+
+        </div>
+    </div><!--/.tradeoffsection -->
+
+
+
+
+    <footer class="container">
+        <hr style="margin-bottom: 10px">
+        Copyright © 2004-2014 Kove. All rights reserved. <a href="#top" class="pull-right">top</a>
+    </footer>
+
+
+    <!--angular js-->
+    <script type="text/javascript" src="js/angular.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+
+
+    <!-- jQuery Version 1.11.0 -->
+    <script src="js/jquery-1.11.0.js"></script>
+
+    <!-- Transitions -->
+    <script src="js/transitions.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="bootstrap-3.2.0/js/bootstrap.min.js"></script>
+
+
+
+
+
+</body>
+
+</html>
