@@ -98,7 +98,67 @@
         <h2 style="text-align: center">Storage Media Tradeoffs</h2>
         <p>The Kove® philosophy believes that selecting the right technology can be reduced to understanding and managing tradeoffs. Just as you might not purchase a Ferrari for family outings, you’d think twice about purchasing spinning disk for IOPS, Flash for predictable high performance, or DRAM for bulk storage.</p>
         <p>Current performance storage relies on spinning disk, Flash, and DRAM, each of which has distinctive tradeoffs.</p>
-        <div class="row" id="svg">
+
+        <!--Icons for XS-->
+        <div class="row visible-xs" id="svg">
+            <!--disk icon-->
+            <div class="col-md-4 col-sm-4 text-center tradeoffslinks">
+                <li ng-class="{ active: isSetsm(1) }"><a href ng-click="setTabsm(1)">
+
+                    <h4>Spinning Disks</h4>
+                    <img src="img/hard10.png">
+                </a></li>
+            </div>
+            <div ng-show="isSetsm(1)">
+                <hr>
+                <p><span class="bold">Advantages</span> Spinning disk continues to offer advantages for bulk storage. It can parallelize sufficiently enough to generate high bandwidth that does not require low latency. Spinning disk is reliable, proven, and inexpensive. Disk arrays do and will bulk up and failover reliably in the real world.</p>
+                <p><span class="bold">Disadvantages</span> Spinning disk has very poor latency and I/O Operations per Second (IOPS). Delivering high performance with spinning disk requires substantial power.</p>
+            </div>
+
+
+            <!--flash icon-->
+            <div class="col-md-4 col-sm-4 text-center tradeoffslinks">
+                <li ng-class="{ active: isSetsm(2) }"><a href ng-click="setTabsm(2)">
+                    <h4>Flash</h4>
+                    <img src="img/ssd.png">
+                </a></li>
+
+            </div>
+            <!--Hidden flash section-->
+            <div ng-show="isSetsm(2)">
+                <hr>
+                <p><span class="bold">Advantages</span> Compared to spinning disk, Flash offers superior IOPS, read performance, and IOPS cost. Compared to DRAM, Flash provides superior energy efficiency and doesn’t require a backing store for long-term storage.</p>
+                <p><span class="bold">Disadvantages</span> Compared to spinning disk, Flash is complex to manage. Flash performance can vary according to I/O pattern (read, write, mixed, burst, continuous, random, sequential), and its performance level can degrade as much as 90+% as its occupancy increases (“how full the disk is”). When storage performance and predictability matter, administrators must keenly monitor occupancy. Flash uses buffering to conceal 1.4 ms write costs. Constant, durable load can exceed buffering and result in poor performance.</p>
+                <p>Compared to DRAM, Flash performance varies considerably across I/O profiles, depending on whether the storage is reading or writing, using small or large block sizes, providing sequential or random access, or running continuously or in burst. Usage wear influences performance, and wear leveling, block retirement, and RAM buffering diminish, but do not eliminate, this concern. Even with buffering, Flash latency lags behind DRAM performance.</p>
+                <p>Latency, bandwidth, and IOPS all degrade through time in Flash. Performance varies across block size, and administrators should test each manufacturer’s product against their application to ensure that manufacturer design optimizations actually deliver against requirements. Flash provides cost-effective burst performance, but does not yield consistent, sustainable performance under load over time.</p>
+            </div>
+
+
+            <!--dram icon-->
+            <div class="col-md-4 col-sm-4 text-center tradeoffslinks">
+                <li ng-class="{ active: isSetsm(3) }"><a href ng-click="setTabsm(3)">
+                    <h4>DRAM</h4>
+                    <img src="img/random.png">
+                </a></li>
+            </div>
+            <!--Hidden dram section-->
+            <div ng-show="isSetsm(3)">
+                <hr>
+                <p><span class="bold">Advantages</span> DRAM will run any I/O pattern at predictable performance levels, day-in and day-out, just as well for one year as for one minute.</p>
+                <p>DRAM continues to provide the highest performing media. as well as the most robust solid state storage medium.</p>
+                <p class="topoflist">Compared to spinning disk or Flash, DRAM provides predictable, uniform, and superior performance for:</p>
+                <ul>
+                    <li>Uniform, predictable, and deterministic performance—without disclaimers.</li>
+                    <li>Performance for variable or diverse I/O patterns that can include small to large block sizes, writes or reads, burst or continuous access, and random or sequential access.</li>
+                    <li>Lowest available latency, highest available bandwidth, and highest sustainable IOPS.</li>
+                </ul>
+                <p class="bottomoflist"><span class="bold">Disadvantages</span> Compared to spinning disk or Flash, DRAM costs more on a capacity basis. DRAM requires power backup and backing store for durable persistence across power cycles. DRAM uses less power on a performance basis, but more power on a capacity basis than either spinning disk or Flash.</p>
+            </div>
+        </div><!--end of sm-->
+
+
+        <!--Icons for SM and up-->
+        <div class="row hidden-xs" id="svg">
             <!--disk icon-->
             <div class="col-md-4 col-sm-4 text-center tradeoffslinks" id="disks">
                 <li ng-class="{ active: isSet(1) }"><a href ng-click="setTab(1)">
@@ -125,34 +185,37 @@
         </div>
 
         <!--Hidden disk section-->
-        <div id="aboutdisks" ng-show="isSet(1)">
-            <hr>
-            <p><span class="bold">Advantages</span> Spinning disk continues to offer advantages for bulk storage. It can parallelize sufficiently enough to generate high bandwidth that does not require low latency. Spinning disk is reliable, proven, and inexpensive. Disk arrays do and will bulk up and failover reliably in the real world.</p>
-            <p><span class="bold">Disadvantages</span> Spinning disk has very poor latency and I/O Operations per Second (IOPS). Delivering high performance with spinning disk requires substantial power.</p>
+        <div class="hidden-xs">
+            <div id="aboutdisks" ng-show="isSet(1)">
+                <hr>
+                <p><span class="bold">Advantages</span> Spinning disk continues to offer advantages for bulk storage. It can parallelize sufficiently enough to generate high bandwidth that does not require low latency. Spinning disk is reliable, proven, and inexpensive. Disk arrays do and will bulk up and failover reliably in the real world.</p>
+                <p><span class="bold">Disadvantages</span> Spinning disk has very poor latency and I/O Operations per Second (IOPS). Delivering high performance with spinning disk requires substantial power.</p>
+            </div>
+
+            <!--Hidden flash section-->
+            <div id="aboutflash" ng-show="isSet(2)">
+                <hr>
+                <p><span class="bold">Advantages</span> Compared to spinning disk, Flash offers superior IOPS, read performance, and IOPS cost. Compared to DRAM, Flash provides superior energy efficiency and doesn’t require a backing store for long-term storage.</p>
+                <p><span class="bold">Disadvantages</span> Compared to spinning disk, Flash is complex to manage. Flash performance can vary according to I/O pattern (read, write, mixed, burst, continuous, random, sequential), and its performance level can degrade as much as 90+% as its occupancy increases (“how full the disk is”). When storage performance and predictability matter, administrators must keenly monitor occupancy. Flash uses buffering to conceal 1.4 ms write costs. Constant, durable load can exceed buffering and result in poor performance.</p>
+                <p>Compared to DRAM, Flash performance varies considerably across I/O profiles, depending on whether the storage is reading or writing, using small or large block sizes, providing sequential or random access, or running continuously or in burst. Usage wear influences performance, and wear leveling, block retirement, and RAM buffering diminish, but do not eliminate, this concern. Even with buffering, Flash latency lags behind DRAM performance.</p>
+                <p>Latency, bandwidth, and IOPS all degrade through time in Flash. Performance varies across block size, and administrators should test each manufacturer’s product against their application to ensure that manufacturer design optimizations actually deliver against requirements. Flash provides cost-effective burst performance, but does not yield consistent, sustainable performance under load over time.</p>
+            </div>
+
+            <!--Hidden dram section-->
+            <div id="aboutdram" ng-show="isSet(3)">
+                <hr>
+                <p><span class="bold">Advantages</span> DRAM will run any I/O pattern at predictable performance levels, day-in and day-out, just as well for one year as for one minute.</p>
+                <p>DRAM continues to provide the highest performing media. as well as the most robust solid state storage medium.</p>
+                <p class="topoflist">Compared to spinning disk or Flash, DRAM provides predictable, uniform, and superior performance for:</p>
+                <ul>
+                    <li>Uniform, predictable, and deterministic performance—without disclaimers.</li>
+                    <li>Performance for variable or diverse I/O patterns that can include small to large block sizes, writes or reads, burst or continuous access, and random or sequential access.</li>
+                    <li>Lowest available latency, highest available bandwidth, and highest sustainable IOPS.</li>
+                </ul>
+                <p class="bottomoflist"><span class="bold">Disadvantages</span> Compared to spinning disk or Flash, DRAM costs more on a capacity basis. DRAM requires power backup and backing store for durable persistence across power cycles. DRAM uses less power on a performance basis, but more power on a capacity basis than either spinning disk or Flash.</p>
+            </div>
         </div>
 
-        <!--Hidden flash section-->
-        <div id="aboutflash" ng-show="isSet(2)">
-            <hr>
-            <p><span class="bold">Advantages</span> Compared to spinning disk, Flash offers superior IOPS, read performance, and IOPS cost. Compared to DRAM, Flash provides superior energy efficiency and doesn’t require a backing store for long-term storage.</p>
-            <p><span class="bold">Disadvantages</span> Compared to spinning disk, Flash is complex to manage. Flash performance can vary according to I/O pattern (read, write, mixed, burst, continuous, random, sequential), and its performance level can degrade as much as 90+% as its occupancy increases (“how full the disk is”). When storage performance and predictability matter, administrators must keenly monitor occupancy. Flash uses buffering to conceal 1.4 ms write costs. Constant, durable load can exceed buffering and result in poor performance.</p>
-            <p>Compared to DRAM, Flash performance varies considerably across I/O profiles, depending on whether the storage is reading or writing, using small or large block sizes, providing sequential or random access, or running continuously or in burst. Usage wear influences performance, and wear leveling, block retirement, and RAM buffering diminish, but do not eliminate, this concern. Even with buffering, Flash latency lags behind DRAM performance.</p>
-            <p>Latency, bandwidth, and IOPS all degrade through time in Flash. Performance varies across block size, and administrators should test each manufacturer’s product against their application to ensure that manufacturer design optimizations actually deliver against requirements. Flash provides cost-effective burst performance, but does not yield consistent, sustainable performance under load over time.</p>
-        </div>
-
-        <!--Hidden dram section-->
-        <div id="aboutdram" ng-show="isSet(3)">
-            <hr>
-            <p><span class="bold">Advantages</span> DRAM will run any I/O pattern at predictable performance levels, day-in and day-out, just as well for one year as for one minute.</p>
-            <p>DRAM continues to provide the highest performing media. as well as the most robust solid state storage medium.</p>
-            <p class="topoflist">Compared to spinning disk or Flash, DRAM provides predictable, uniform, and superior performance for:</p>
-            <ul>
-                <li>Uniform, predictable, and deterministic performance—without disclaimers.</li>
-                <li>Performance for variable or diverse I/O patterns that can include small to large block sizes, writes or reads, burst or continuous access, and random or sequential access.</li>
-                <li>Lowest available latency, highest available bandwidth, and highest sustainable IOPS.</li>
-            </ul>
-            <p class="bottomoflist"><span class="bold">Disadvantages</span> Compared to spinning disk or Flash, DRAM costs more on a capacity basis. DRAM requires power backup and backing store for durable persistence across power cycles. DRAM uses less power on a performance basis, but more power on a capacity basis than either spinning disk or Flash.</p>
-        </div>
 
 
 
