@@ -68,53 +68,118 @@
         <hr>
         <p style="text-align: center">The Kove® Corporation was founded in 2004 with a focus on building top quality technology fundamentals, with an emphasis on premium, high performance storage. We have a track record of products that “just work,” and customers all over the world who will attest to this.</p>
 
-        <div style="padding-bottom: 30px">
+        <!-- XS and SM view -->
+        <div class="visible-xs visible-sm">
 
-            <a href="#values" ng-class="{ active: isSet(1) }" ng-click="setTab(1)" id="values">
+
+            <a href="#values" ng-class="{ active: isSetsm(1) }" ng-click="setTabsm(1)">
                 <div class="col-md-4">
                     <div class="about-circle">
                         <p>Values</p>
                     </div>
                 </div>
             </a>
-            <a href="#teamwork" ng-class="{ active: isSet(2) }" ng-click="setTab(2)" id="teamwork">
+            <div style="padding-bottom: 30px"></div>
+            <!--Hidden values section-->
+            <div class="text-center" ng-show="isSetsm(1)">
+                <hr>
+                <p>The Kove® culture is built on “old fashioned” values. We appreciate and listen to our customers, build and believe in relationships of trust, and think service, humility, and integrity matter to the short- and long-term bottom line. These are our commitments and our customers will attest that we live by these values.</p>
+                <p>We believe in applying human intelligence to address complex problems, in which equipment, design, architecture, engineering, value, and people all have important roles to play.</p>
+                <p>We are committed to producing the highest-performing products in the world, with emphasis on serviceability, ease of use, and durability.</p>
+            </div>
+
+            <a href="#teamwork" ng-class="{ active: isSetsm(2) }" ng-click="setTabsm(2)">
                 <div class="col-md-4">
                     <div class="about-circle">
                         <p>Teamwork</p>
                     </div>
                 </div>
             </a>
-            <a href="#technology" ng-class="{ active: isSet(3) }" ng-click="setTab(3)" id="technology">
+            <div style="padding-bottom: 30px"></div>
+            <!--Hidden teamwork section-->
+            <div class="text-center" ng-show="isSetsm(2)">
+                <hr>
+                <p>Kove® product development emphasizes teamwork beyond virtuoso achievement, even though our team members have strong backgrounds from premier tech companies, including Intel, Sun, Cisco, Seagate, Quantum, NASA, and many others.</p>
+                <p>We emphasize teamwork inside and out. Internally, our approach is based on collaboration and focus. Externally, we strive to learn each customer’s challenges and to provide solutions otherwise unavailable in the industry.</p>
+
+            </div>
+
+            <a href="#technology" ng-class="{ active: isSetsm(3) }" ng-click="setTabsm(3)">
                 <div class="col-md-4">
                     <div class="about-circle">
                         <p>Technology</p>
                     </div>
                 </div>
             </a>
-        </div>
+            <div style="padding-bottom: 30px"></div>
+            <!--Hidden technology section-->
+            <div class="text-center" ng-show="isSetsm(3)">
+                <hr>
+                <p>We use a “systems” approach to technology, recognizing that intellect and experience should never be privileged above actual output. We tell the truth about our products. They work as advertised, and do not require disclaimers and fine-print qualifications about usability, durability, consistency, and performance.</p>
+            </div>
 
-        <div class="padding"></div>
-        <!--Hidden values section-->
-        <div class="text-center" id="aboutvalues" ng-show="isSet(1)">
-            <hr>
-            <p>The Kove® culture is built on “old fashioned” values. We appreciate and listen to our customers, build and believe in relationships of trust, and think service, humility, and integrity matter to the short- and long-term bottom line. These are our commitments and our customers will attest that we live by these values.</p>
-            <p>We believe in applying human intelligence to address complex problems, in which equipment, design, architecture, engineering, value, and people all have important roles to play.</p>
-            <p>We are committed to producing the highest-performing products in the world, with emphasis on serviceability, ease of use, and durability.</p>
-        </div>
 
-        <!--Hidden teamwork section-->
-        <div class="text-center" id="aboutteamwork" ng-show="isSet(2)">
-            <hr>
-            <p>Kove® product development emphasizes teamwork beyond virtuoso achievement, even though our team members have strong backgrounds from premier tech companies, including Intel, Sun, Cisco, Seagate, Quantum, NASA, and many others.</p>
-            <p>We emphasize teamwork inside and out. Internally, our approach is based on collaboration and focus. Externally, we strive to learn each customer’s challenges and to provide solutions otherwise unavailable in the industry.</p>
+
+
+
+
+
+
 
         </div>
 
-        <!--Hidden technology section-->
-        <div class="text-center" id="abouttechnology" ng-show="isSet(3)">
-            <hr>
-            <p>We use a “systems” approach to technology, recognizing that intellect and experience should never be privileged above actual output. We tell the truth about our products. They work as advertised, and do not require disclaimers and fine-print qualifications about usability, durability, consistency, and performance.</p>
-        </div>
+
+        <!-- Normal view-->
+        <div class="hidden-xs hidden-sm">
+            <div style="padding-bottom: 30px">
+
+                <a href="#values" ng-class="{ active: isSet(1) }" ng-click="setTab(1)" id="values">
+                    <div class="col-md-4">
+                        <div class="about-circle">
+                            <p>Values</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#teamwork" ng-class="{ active: isSet(2) }" ng-click="setTab(2)" id="teamwork">
+                    <div class="col-md-4">
+                        <div class="about-circle">
+                            <p>Teamwork</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#technology" ng-class="{ active: isSet(3) }" ng-click="setTab(3)" id="technology">
+                    <div class="col-md-4">
+                        <div class="about-circle">
+                            <p>Technology</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="padding"></div>
+            <!--Hidden values section-->
+            <div class="text-center" id="aboutvalues" ng-show="isSet(1)">
+                <hr>
+                <p>The Kove® culture is built on “old fashioned” values. We appreciate and listen to our customers, build and believe in relationships of trust, and think service, humility, and integrity matter to the short- and long-term bottom line. These are our commitments and our customers will attest that we live by these values.</p>
+                <p>We believe in applying human intelligence to address complex problems, in which equipment, design, architecture, engineering, value, and people all have important roles to play.</p>
+                <p>We are committed to producing the highest-performing products in the world, with emphasis on serviceability, ease of use, and durability.</p>
+            </div>
+
+            <!--Hidden teamwork section-->
+            <div class="text-center" id="aboutteamwork" ng-show="isSet(2)">
+                <hr>
+                <p>Kove® product development emphasizes teamwork beyond virtuoso achievement, even though our team members have strong backgrounds from premier tech companies, including Intel, Sun, Cisco, Seagate, Quantum, NASA, and many others.</p>
+                <p>We emphasize teamwork inside and out. Internally, our approach is based on collaboration and focus. Externally, we strive to learn each customer’s challenges and to provide solutions otherwise unavailable in the industry.</p>
+
+            </div>
+
+            <!--Hidden technology section-->
+            <div class="text-center" id="abouttechnology" ng-show="isSet(3)">
+                <hr>
+                <p>We use a “systems” approach to technology, recognizing that intellect and experience should never be privileged above actual output. We tell the truth about our products. They work as advertised, and do not require disclaimers and fine-print qualifications about usability, durability, consistency, and performance.</p>
+            </div>
+
+        </div><!-- end normal view-->
 
 
 
